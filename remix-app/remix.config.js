@@ -3,11 +3,11 @@
  */
 module.exports = {
   ignoredRouteFiles: [".*"],
-  routes(defineRoutes) {
-    return defineRoutes((route) => {
-      route("/Layout/*", "Layout.tsx");
-    });
-  },
+  // routes(defineRoutes) {
+  //   return defineRoutes((route) => {
+  //     route("/Layout/*", "Layout.tsx");
+  //   });
+  // },
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "build/index.js",
