@@ -1,6 +1,6 @@
+import { NavbarTop } from "../components/NavbarTop";
+import { SubHeader } from "../components/SubHeader";
 import useSubHeaderHading from "../hooks/useSubHeaderHeading";
-import { NavbarTop } from "./NavbarTop";
-import { SubHeader } from "./SubHeader";
 
 export default function Layout(props: any): JSX.Element {
   const [heading] = useSubHeaderHading("Dashboard");

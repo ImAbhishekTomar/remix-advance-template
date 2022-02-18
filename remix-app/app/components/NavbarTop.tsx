@@ -9,9 +9,9 @@ const user = {
     "https://avatars.githubusercontent.com/u/6933841?s=400&u=634649704c9df002ad5614246475288e6122e5a2&v=4",
 };
 const navigation = [
-  { name: "Dashboard", href: "/Page1", current: true },
-  { name: "Team", href: "/Page2", current: false },
-  { name: "Projects", href: "/Page2", current: false },
+  { name: "Dashboard", href: "/home/home1", current: true },
+  { name: "Team", href: "/home/home2", current: false },
+  { name: "Projects", href: "/page2", current: false },
   { name: "Calendar", href: "#", current: false },
   { name: "Reports", href: "#", current: false },
 ];
