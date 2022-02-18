@@ -1,26 +1,30 @@
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Fragment } from "react";
+import { ProfileMenu } from "./ProfileMenu";
+import { TopLogo } from "./TopLogo";
+
+const navigation = [
+  { name: "Dashboard", href: "#", current: true },
+  { name: "Docs", href: "https://remix.run/docs/en/v1", current: false },
+  { name: "Github", href: "https://github.com/remix-run", current: false },
+  { name: "Team", href: "#", current: false },
+  { name: "Blog", href: "https://remix.run/blog", current: false },
+];
 
 const user = {
   name: "Abhishek Tomar",
-  email: "https://github.com/ImAbhishekTomar",
+  email: "https://twitter.com/ImAbhishekTomar",
   imageUrl:
     "https://avatars.githubusercontent.com/u/6933841?s=400&u=634649704c9df002ad5614246475288e6122e5a2&v=4",
 };
-const navigation = [
-  { name: "Dashboard", href: "/homes/home1", current: true },
-  { name: "Team", href: "/homes/home2", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
-  { name: "Reports", href: "#", current: false },
-];
+
 const userNavigation = [
   {
-    name: "Your Profile",
-    href: "https://github.com/ImAbhishekTomar",
+    name: "Twitter",
+    href: "https://twitter.com/ImAbhishekTomar",
+    target: "_blank",
   },
-  { name: "Settings", href: "#" },
+  { name: "Github", href: "https://github.com/ImAbhishekTomar" },
   { name: "Sign out", href: "#" },
 ];
 
@@ -30,19 +34,15 @@ function classNames(...classes: any[]) {
 
 export function NavbarTop(props: {}): JSX.Element {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure
+      as="nav"
+      className="bg-gradient-to-r from-indigo-500 via-green-300 via-yellow-400 via-violet-600 to-red-400">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <img
-                    className="h-12 w-12 rounded-full border-2  border-white"
-                    src="https://source.unsplash.com/random/12"
-                    alt="Workflow"
-                  />
-                </div>
+                <TopLogo />
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navigation.map((item) => (
@@ -72,39 +72,7 @@ export function NavbarTop(props: {}): JSX.Element {
                   </button>
 
                   {/* Profile dropdown */}
-                  <Menu as="div" className="ml-3 relative">
-                    <div>
-                      <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                        <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95">
-                      <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        {userNavigation.map((item) => (
-                          <Menu.Item key={item.name}>
-                            {({ active }) => (
-                              <a
-                                href={item.href}
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}>
-                                {item.name}
-                              </a>
-                            )}
-                          </Menu.Item>
-                        ))}
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
+                  <ProfileMenu userNavigation={userNavigation} user={user} />
                 </div>
               </div>
               <div className="-mr-2 flex md:hidden">

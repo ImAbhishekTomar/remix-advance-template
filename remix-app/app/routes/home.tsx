@@ -1,5 +1,5 @@
 import Layout from "~/routes/Layout";
-import Home1 from "./homes/home1";
+import Home1 from "./home/home1";
 
 export default function Home() {
   return (
